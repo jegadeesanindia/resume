@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Log in</title>
+<link rel="stylesheet" href="css/bootstrap.css" />
+<script type="text/javascript">
+function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+function login(){
+	  var xhttp = new XMLHttpRequest();
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	      document.getElementById("demo").innerHTML = this.responseText;
+	    }
+	  };
+	  xhttp.open("POST", "ls", true);
+	  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	  var mail=document.getElementById("emailid").value;
+	  var pass=document.getElementById("password").value;
+	  var type=document.getElementById("type").value;
+	  xhttp.send("mailid="+mail+"&password="+pass+"&type="+type);
+}
+</script>
+</head>
+<body style="background-color: #343A40">
+<h1 style="color:white;text-align:center;">Resume Generator</h1>
+<div class="container"style="background-color: white">
+ <div class="container"> <img src="img/a.png" class="img-thumbnail" alt="Cinque Terre"></div>
+</div> 
+	<div class="container">
+		<div class="row">
+			<div class="col" id="demo"></div>
+			<div class="col">
+					<div class="form-group">
+						<label for="username">Email ID</label>
+						 <input type="text"
+							class="form-control" name="email" id="emailid"
+							aria-describedby="emailHelp" placeholder="Enter Email-id">
+					</div>
+					<div class="form-group">
+						<label for="password">Password</label> <input type="password"
+							class="form-control" name="pass" id="password"
+							placeholder="Enter Password">
+					</div>
+					  <input type="hidden" id="type" value="login">
+					<button type="submit" class="btn btn-primary" onclick=login()>LOG IN</button>					
+			</div>
+			<div class="col">
+							<a class="nav-item nav-link active" href="Signup.html" style="text-align: center">New user click here</a></div>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
